@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Uma mensagem para você 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(circle at top left, #ffd6e7, transparent 35%),
+                radial-gradient(circle at bottom right, #ffc1dc, transparent 35%),
+                linear-gradient(135deg, #fff0f6, #ffe4ef);
+
+            color: #444;
+        }
+
+        /* Fundo com corações */
+
+        .coracao {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: subir linear infinite;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Cartão */
+
+        .cartao {
+            position: relative;
+            z-index: 10;
+
+            width: min(90%, 700px);
+            max-height: 90vh;
+
+            padding: 30px;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 20px 50px rgba(180, 70, 120, 0.20);
+
+            text-align: center;
+
+            backdrop-filter: blur(10px);
+
+            animation: aparecer 1.2s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #d63384;
+            font-size: clamp(25px, 5vw, 36px);
+        }
+
+        .subtitulo {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        /* Mensagem */
+
+        #mensagem {
+            max-height: 55vh;
+            overflow-y: auto;
+
+            text-align: left;
+
+            padding: 20px;
+
+            background: #fff8fb;
+
+            border-radius: 18px;
+
+            line-height: 1.7;
+
+            font-size: 16px;
+
+            white-space: pre-line;
+
+            scrollbar-width: thin;
+            scrollbar-color: #e98ab1 transparent;
+        }
+
+        .destaque {
+            color: #d63384;
+            font-weight: bold;
+        }
+
+        /* Botão */
+
+        button {
+            margin-top: 20px;
+
+            border: none;
+
+            padding: 13px 28px;
+
+            border-radius: 30px;
+
+            background: linear-gradient(
+                135deg,
+                #d63384,
+                #ec6fa8
+            );
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.25);
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(214, 51, 132, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        /* Responsivo */
+
+        @media (max-width: 600px) {
+            .cartao {
+                padding: 20px;
+                width: 94%;
+            }
+
+            #mensagem {
+                font-size: 15px;
+                padding: 16px;
+                max-height: 58vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Corações do fundo -->
+
+    <div class="coracao" style="left: 5%; animation-duration: 9s;">❤️</div>
+    <div class="coracao" style="left: 15%; animation-duration: 12s; animation-delay: 2s;">💗</div>
+    <div class="coracao" style="left: 25%; animation-duration: 10s; animation-delay: 4s;">💕</div>
+    <div class="coracao" style="left: 40%; animation-duration: 13s; animation-delay: 1s;">💖</div>
+    <div class="coracao" style="left: 55%; animation-duration: 11s; animation-delay: 3s;">💓</div>
+    <div class="coracao" style="left: 70%; animation-duration: 14s; animation-delay: 5s;">💞</div>
+    <div class="coracao" style="left: 85%; animation-duration: 10s; animation-delay: 2s;">❤️</div>
+
+    <!-- Cartão principal -->
+
+    <main class="cartao">
+
+        <h1>💗 Uma mensagem para você 💗</h1>
+
+        <div class="subtitulo">
+            Eu queria que você lesse isso com carinho...
+        </div>
+
+        <div id="mensagem"></div>
+
+        <button onclick="reiniciarMensagem()">
+            💕 Ler novamente
+        </button>
+
+    </main>
+
+    <script>
+
+        const mensagem = `Oi, meu bem! 💗
+
+Eu sei que ultimamente as coisas não estão sendo fáceis para você.
+
+Tem problemas com a família, trabalho, amizades, cólicas e até coisas que envolvem nós dois...
+
+E eu queria muito poder estar aí do seu lado para te dar um abraço e fazer tudo ficar um pouquinho mais leve.
+
+Mas quero que você se lembre de uma coisa:
+
+✨ VAI FICAR TUDO BEM. ✨
+
+Talvez agora pareça que tem coisa demais acontecendo ao mesmo tempo, mas nenhuma fase ruim dura para sempre.
+
+Esses problemas vão passar, um por um.
+
+Você vai conseguir respirar tranquila de novo, sorrir de verdade e perceber que conseguiu superar tudo isso.
+
+E mesmo que eu não esteja fisicamente do seu lado, quero que saiba que EU ESTOU AQUI. ❤️
+
+Se precisar conversar, desabafar, rir, chorar ou simplesmente ter alguém por perto, pode contar comigo.
+
+Até quando o problema for comigo, eu quero que você saiba que não desejo nada além do seu bem.
+
+Eu gosto muito de você e, acima de qualquer coisa, quero te ver bem, tranquila e feliz. 🫶
+
+Então tenha um pouquinho de paciência com você mesma.
+
+Você não precisa resolver tudo hoje.
+
+Respira, descansa quando precisar e vai seguindo um dia de cada vez.
+
+🌷 Vai passar.
+
+❤️ Você vai ficar bem.
+
+🫶 E eu vou continuar aqui, torcendo por você.
+
+E quando tudo isso passar, espero poder estar aqui para comemorar com você também. 😊💗`;
+
+        const elemento = document.getElementById("mensagem");
+
+        let indice = 0;
+        let intervalo;
+
+        function escreverMensagem() {
+
+            clearInterval(intervalo);
+
+            elemento.innerHTML = "";
+            indice = 0;
+
+            intervalo = setInterval(() => {
+
+                if (indice < mensagem.length) {
+
+                    elemento.textContent += mensagem[indice];
+
+                    elemento.scrollTop = elemento.scrollHeight;
+
+                    indice++;
+
+                } else {
+
+                    clearInterval(intervalo);
+
+                }
+
+            }, 25);
+        }
+
+        function reiniciarMensagem() {
+            escreverMensagem();
+        }
+
+        // Começa automaticamente
+        escreverMensagem();
+
+    </script>
+
+</body>
+</html>
+
